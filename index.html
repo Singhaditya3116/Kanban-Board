@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="./style.css">
+
+  <title>Kanban Board</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Kanban Board</h1>
+
+    <!-- Kanban Board Container -->
+    <div class="board-container">
+
+      <!-- Backlog Column -->
+      <div class="backlog">
+        <span class="header">Backlog</span>
+        <ul id="backlog-list" ondragover="allowDrop(event)" ondrop="drop(event)" ondragenter="dragEnter(0)"></ul>
+        <div class="btn-container">
+          <button class="add-btn" onclick="showInputBox(0)"><i class='bx bx-plus'></i>Add Item</button>
+          <button class="save-btn" onclick="hideInputBox(0)">Save Item</button>
+        </div>
+        <div class="content-area" contenteditable="true"></div>
+      </div>
+
+      <!-- In progress Column -->
+      <div class="in-progress">
+        <span class="header">In Progress</span>
+        <ul id="in-progress-list" ondragover="allowDrop(event)" ondrop="drop(event)" ondragenter="dragEnter(1)"></ul>
+        <div class="btn-container">
+          <button class="add-btn" onclick="showInputBox(1)"><i class='bx bx-plus'></i>Add Item</button>
+          <button class="save-btn" onclick="hideInputBox(1)">Save Item</button>
+        </div>
+        <div class="content-area" contenteditable="true"></div>
+      </div>
+
+      <!-- Complete Column -->
+      <div class="complete">
+        <span class="header">Complete</span>
+        <ul id="complete-list" ondragover="allowDrop(event)" ondrop="drop(event)" ondragenter="dragEnter(2)"></ul>
+        <div class="btn-container">
+          <button class="add-btn" onclick="showInputBox(2)"><i class='bx bx-plus'></i>Add Item</button>
+          <button class="save-btn" onclick="hideInputBox(2)">Save Item</button>
+        </div>
+        <div class="content-area" contenteditable="true"></div>
+      </div>
+
+      <!-- Onhold Column -->
+      <div class="onhold">
+        <span class="header">On Hold</span>
+        <ul id="onhold-list" ondragover="allowDrop(event)" ondrop="drop(event)" ondragenter="dragEnter(3)"></ul>
+        <div class="btn-container">
+          <button class="add-btn" onclick="showInputBox(3)"><i class='bx bx-plus'></i>Add Item</button>
+          <button class="save-btn" onclick="hideInputBox(3)">Save Item</button>
+        </div>
+        <div class="content-area" contenteditable="true"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
