@@ -25,7 +25,9 @@ const containerArrayMaps = {
 };
 
 // List Items
-let draggedItem, currentContainer;
+let draggedItem,
+  currentContainer,
+  isDragging = false;
 let list = [backlogList, progressList, completeList, onHoldList];
 
 //set Data in localStorage
@@ -105,6 +107,7 @@ function filterArray() {
 
 //Update Item if changes happen in Items.
 function updateArrayItem(containerIndex, index) {
+  if (isDragging) return;
   let itemValue = list[containerIndex].children[index].innerText;
   if (itemValue === "") {
     // If itemValue is empty remove it from DOM and array.
@@ -136,6 +139,7 @@ function updateArray(previousContainer, currentContainer, itemText) {
 //When Item starts dragging
 function drag(e) {
   draggedItem = e.target;
+  isDragging = true;
 }
 
 //Allow Item to Drop
@@ -152,8 +156,8 @@ function dragEnter(container) {
 //Dropping Item in another container
 function drop(e) {
   e.preventDefault();
+
   const previousContainer = draggedItem.parentElement;
-  console.log(currentContainer);
   currentContainer.appendChild(draggedItem);
   list.forEach((container) => {
     container.classList.remove("over");
@@ -161,6 +165,7 @@ function drop(e) {
 
   updateArray(previousContainer, currentContainer, draggedItem.innerText);
   updateLocalStorage();
+  isDragging = false;
 }
 
 //On load
